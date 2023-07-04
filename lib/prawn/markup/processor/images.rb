@@ -37,7 +37,11 @@ module Prawn
 
       def add_image(img)
         # parse width in the current context
-        img[:width] = SizeConverter.new(pdf.bounds.width).parse(style_properties['width'])
+        if current_attrs['width']
+          img[:width] = SizeConverter.new(pdf.bounds.width).parse(current_attrs['width'])
+        else
+          img[:width] = SizeConverter.new(pdf.bounds.width).parse(style_properties['width'])
+        end
         pdf.image(img.delete(:image), img)
         put_bottom_margin(text_margin_bottom)
       rescue Prawn::Errors::UnsupportedImageType
