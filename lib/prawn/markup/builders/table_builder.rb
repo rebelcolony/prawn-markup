@@ -65,6 +65,14 @@ module Prawn
 
         def convert_cell(cell, col)
           style_options = table_options[cell.header ? :header : :cell]
+
+          if cell.border_width
+            style_options[:border_width] = [
+              cell.border_width.to_i,
+              cell.border_width.to_i
+            ]
+          end
+
           if cell.single?
             normalize_cell_node(cell.nodes.first, column_content_width(col), style_options)
           else

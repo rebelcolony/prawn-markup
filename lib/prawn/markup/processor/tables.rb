@@ -36,7 +36,10 @@ module Prawn
       def start_td
         return unless current_table
 
-        current_table.last << Elements::Cell.new(width: style_properties['width'])
+        options = { width: style_properties['width'] }
+        options[:border_width] = style_properties['border-width'] if style_properties['border-width']
+        
+        current_table.last << Elements::Cell.new(**options)
       end
 
       def start_th
