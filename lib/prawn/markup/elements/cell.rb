@@ -6,7 +6,7 @@ module Prawn
       class Cell < Item
         attr_reader :header, :width, :border_width
 
-        def initialize(header: false, width: 'auto')
+        def initialize(header: false, width: 'auto', border_width: 1)
           super()
           @header = header
           @width = width
