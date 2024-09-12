@@ -42,7 +42,7 @@ module Prawn
         # else
         #   img[:width] = SizeConverter.new(pdf.bounds.width).parse(style_properties['width'])
         # end
-        img[:width] = SizeConverter.new(pdf.bounds.width).parse(current_attrs['width']) * 0.65 # reduce the width to match TinyMCE wusiwug
+        img[:width] = SizeConverter.new(pdf.bounds.width).parse(current_attrs['width'])
         pdf.image(img.delete(:image), img)
         put_bottom_margin(text_margin_bottom)
       rescue Prawn::Errors::UnsupportedImageType
