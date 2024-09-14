@@ -17,7 +17,7 @@ module Prawn
       end
 
       def convert(string)
-        value = string.to_f
+        value = string.to_f * 0.40
         if string.end_with?('%')
           max ? value * max / 100.0 : nil
         elsif string.end_with?('cm')
